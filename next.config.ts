@@ -3,14 +3,10 @@ import type { NextConfig } from "next";
 /** @type {import('next').NextConfig} */
 const nextConfig: NextConfig = {
   /**
-   * Output mode: "standalone" produces a self-contained build
-   * that Vercel automatically detects and optimises.
-   */
-  output: "standalone",
-
-  /**
-   * Image optimisation — serves BG-Hero1.png through Next.js'
-   * built-in <Image> pipeline if needed in future.
+   * Image optimisation — serves all local images through Next.js'
+   * built-in <Image> pipeline with avif/webp delivery.
+   * NOTE: Do NOT use output:"standalone" on Vercel — it bypasses
+   * Vercel's public folder static asset serving.
    */
   images: {
     formats: ["image/avif", "image/webp"],

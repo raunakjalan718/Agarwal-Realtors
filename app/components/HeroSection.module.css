@@ -19,6 +19,7 @@
 .heroBg {
   position: absolute;
   inset: 0;
+  background-color: #991515;             /* red fallback if image fails */
   background-image: url("/BG-Hero1.png");
   background-size: cover;
   background-position: center center;
