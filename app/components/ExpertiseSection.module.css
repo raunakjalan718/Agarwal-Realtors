@@ -1,0 +1,144 @@
+/* ============================================================
+   ExpertiseSection.module.css  v2 — Black bg / Red accents
+   ============================================================ */
+
+.expertise {
+  position: relative;
+  background-color: var(--clr-black);
+  padding: 0 0 var(--section-py);
+  overflow: hidden;
+}
+
+/* ── Clean gradient line divider ── */
+.dividerTop {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(200, 25, 43, 0.4) 25%,
+    rgba(200, 25, 43, 0.4) 75%,
+    transparent 100%
+  );
+  margin-bottom: clamp(4rem, 7vw, 6rem);
+}
+
+.inner {
+  padding: 0 var(--section-px);
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+/* ── Section header ── */
+.sectionHeader {
+  text-align: center;
+  margin-bottom: clamp(3rem, 5vw, 4.5rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--clr-red);
+}
+
+.heading {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+  font-weight: 800;
+  color: var(--clr-text-primary);
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.subheading {
+  font-family: var(--font-body);
+  font-size: clamp(0.88rem, 1.4vw, 1rem);
+  font-weight: 400;
+  color: var(--clr-text-secondary);
+  max-width: 44ch;
+  line-height: 1.7;
+}
+
+/* ── 3-column grid ── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+/* ── Service card ── */
+.card {
+  position: relative;
+  background-color: #111111;
+  padding: clamp(1.75rem, 3vw, 2.25rem);
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  overflow: hidden;
+  border: var(--border-dim);
+  transition:
+    border-color 0.35s var(--ease-smooth),
+    transform    0.45s var(--ease-expo),
+    box-shadow   0.45s var(--ease-expo);
+}
+
+.card:hover {
+  border-color: rgba(200, 25, 43, 0.45);
+  transform: translateY(-6px);
+  box-shadow:
+    0 0 0 1px rgba(200, 25, 43, 0.2),
+    0 20px 60px rgba(0, 0, 0, 0.5),
+    0 0 30px rgba(200, 25, 43, 0.06);
+}
+
+/* Icon */
+.iconWrap {
+  width: 44px;
+  height: 44px;
+  color: var(--clr-red);
+  transition: color 0.3s var(--ease-smooth);
+}
+.card:hover .iconWrap { color: var(--clr-red-bright); }
+.iconWrap svg { width: 100%; height: 100%; }
+
+/* Card title */
+.cardTitle {
+  font-family: var(--font-display);
+  font-size: clamp(0.95rem, 1.4vw, 1.1rem);
+  font-weight: 700;
+  color: var(--clr-text-primary);
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+
+/* Card description */
+.cardDesc {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: var(--clr-text-secondary);
+  line-height: 1.7;
+  flex: 1;
+}
+
+/* Animated red bottom line */
+.cardAccent {
+  position: absolute;
+  bottom: 0; left: 0;
+  height: 2px;
+  width: 0;
+  background: var(--clr-red);
+  transition: width 0.45s var(--ease-expo);
+}
+.card:hover .cardAccent { width: 100%; }
+
+/* ── Responsive ── */
+@media (max-width: 900px)  { .grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 580px)  { .grid { grid-template-columns: 1fr; } }

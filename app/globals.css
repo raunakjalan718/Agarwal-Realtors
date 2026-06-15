@@ -1,0 +1,178 @@
+/* ============================================================
+   Agarwal Realtors — Global Stylesheet  v2
+   Typography: Montserrat (headings) + Inter (body)
+   Theme: strict black & red, premium minimalist
+   ============================================================ */
+
+/* ---------- Design Tokens ---------- */
+:root {
+  /* Palette */
+  --clr-black:        #090909;
+  --clr-black-nav:    #000000;
+  --clr-black-card:   #111111;
+  --clr-black-input:  #141414;
+  --clr-black-surface:#0d0d0d;
+  --clr-red:          #c8192b;
+  --clr-red-bright:   #e8202f;
+  --clr-red-deep:     #8b0000;
+  --clr-red-muted:    rgba(200, 25, 43, 0.15);
+
+  /* Text — crisp off-white on dark */
+  --clr-text-primary:   #f0eeeb;      /* headings on black */
+  --clr-text-secondary: #b8b4ae;      /* body on black */
+  --clr-text-muted:     #6e6a65;      /* captions, meta */
+
+  /* Hero overlay */
+  --hero-overlay: rgba(180, 18, 28, 0.78);
+
+  /* Typography */
+  --font-display: "Montserrat", system-ui, sans-serif;
+  --font-body:    "Inter", system-ui, sans-serif;
+
+  /* Sizing */
+  --nav-height:   64px;
+  --section-py:   clamp(5rem, 9vw, 8rem);
+  --section-px:   clamp(1.25rem, 7vw, 6rem);
+  --max-width:    1380px;
+
+  /* Easing */
+  --ease-expo:   cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Borders & Shadows */
+  --border-dim:     1px solid rgba(255, 255, 255, 0.07);
+  --border-red-dim: 1px solid rgba(200, 25, 43, 0.2);
+  --shadow-card:    0 4px 24px rgba(0, 0, 0, 0.4);
+  --shadow-lift:    0 20px 60px rgba(0, 0, 0, 0.55);
+  --glow-red:       0 0 0 1.5px var(--clr-red), 0 12px 40px rgba(200,25,43,0.15);
+}
+
+/* ---------- Reset ---------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.65;
+  background-color: var(--clr-black);
+  color: var(--clr-text-primary);
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--clr-text-primary);
+}
+
+p { color: var(--clr-text-secondary); }
+
+a { color: inherit; }
+
+/* ---------- Utilities ---------- */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap; border: 0;
+}
+
+/* ---------- Section Divider — clean line ---------- */
+.section-divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(200, 25, 43, 0.35) 30%,
+    rgba(200, 25, 43, 0.35) 70%,
+    transparent 100%
+  );
+}
+
+/* ---------- Scroll-Reveal States ---------- */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity   0.7s var(--ease-expo),
+    transform 0.7s var(--ease-expo);
+  transition-delay: var(--reveal-delay, 0s);
+}
+
+[data-reveal="slide-left"]  { transform: translateX(-40px); }
+[data-reveal="slide-right"] { transform: translateX(40px);  }
+[data-reveal="scale"]       { transform: scale(0.94);       }
+[data-reveal="fade"]        { transform: none;               }
+
+[data-reveal].revealed {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- Shared Button Styles ---------- */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 14px 28px;
+  border: none;
+  cursor: pointer;
+  transition:
+    background-color 0.3s var(--ease-smooth),
+    transform        0.35s var(--ease-expo),
+    box-shadow       0.35s var(--ease-expo);
+}
+
+/* ---------- Keyframes ---------- */
+@keyframes navSlideDown {
+  from { transform: translateY(-100%); opacity: 0; }
+  to   { transform: translateY(0);     opacity: 1; }
+}
+@keyframes fadeSlideLeft {
+  from { opacity: 0; transform: translateX(-28px); }
+  to   { opacity: 1; transform: translateX(0);     }
+}
+@keyframes fadeSlideRight {
+  from { opacity: 0; transform: translateX(28px); }
+  to   { opacity: 1; transform: translateX(0);    }
+}
+@keyframes heroReveal {
+  from { opacity: 0; transform: translateY(40px); filter: blur(4px); }
+  to   { opacity: 1; transform: translateY(0);    filter: blur(0);   }
+}
+@keyframes arrowBounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(10px); }
+}
+@keyframes circlePulse {
+  0%, 100% { box-shadow: 0 0 0 0   rgba(255,255,255,0.25); }
+  50%       { box-shadow: 0 0 0 10px rgba(255,255,255,0);   }
+}
+@keyframes ctaPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(200,25,43,0.4); }
+  50%       { box-shadow: 0 0 0 12px rgba(200,25,43,0); }
+}
+@keyframes lineExpand {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}

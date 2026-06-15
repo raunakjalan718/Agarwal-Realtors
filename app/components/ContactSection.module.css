@@ -1,0 +1,319 @@
+/* ============================================================
+   ContactSection.module.css  v2
+   Red section bg + dark elevated card floating on top
+   ============================================================ */
+
+.contact {
+  position: relative;
+  background-color: var(--clr-red);
+  padding: 0 0 var(--section-py);
+  overflow: hidden;
+}
+
+/* ── Clean gradient divider ── */
+.dividerTop {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0, 0, 0, 0.4) 25%,
+    rgba(0, 0, 0, 0.4) 75%,
+    transparent 100%
+  );
+  margin-bottom: clamp(3.5rem, 6vw, 5.5rem);
+}
+
+/* ── Elevated dark card ── */
+.card {
+  background-color: #0d0d0d;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow:
+    0 40px 120px rgba(0, 0, 0, 0.7),
+    0 8px 32px rgba(0, 0, 0, 0.5);
+  margin: 0 var(--section-px);
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+  /* Override px for card positioning */
+  width: calc(100% - clamp(2.5rem, 14vw, 12rem));
+}
+
+.cardInner {
+  display: grid;
+  grid-template-columns: 1.1fr auto 0.9fr;
+  gap: 0;
+  align-items: start;
+}
+
+/* Vertical divider between columns */
+.colDivider {
+  width: 1px;
+  background: rgba(255, 255, 255, 0.07);
+  align-self: stretch;
+  margin: 2.5rem 0;
+}
+
+/* ── Form column ── */
+.formCol {
+  padding: clamp(2.5rem, 4vw, 3.5rem) clamp(2rem, 3.5vw, 3rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--clr-red);
+}
+
+.heading {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.2vw, 2.8rem);
+  font-weight: 800;
+  color: var(--clr-text-primary);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+.subtext {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--clr-text-secondary);
+  line-height: 1.7;
+  max-width: 38ch;
+  margin-bottom: 0.4rem;
+}
+
+/* ── Form ── */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.label {
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--clr-text-muted);
+}
+
+.input {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: var(--clr-text-primary);
+  background-color: #141414;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 11px 14px;
+  width: 100%;
+  appearance: none;
+  border-radius: 0;
+  outline: none;
+  transition:
+    border-color 0.25s var(--ease-smooth),
+    box-shadow   0.25s var(--ease-smooth),
+    background   0.25s var(--ease-smooth);
+}
+
+.input::placeholder { color: rgba(240, 238, 235, 0.2); }
+
+.input:focus {
+  border-color: var(--clr-red);
+  box-shadow: 0 0 0 3px rgba(200, 25, 43, 0.18);
+  background-color: #181818;
+}
+
+/* Select arrow */
+select.input {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236e6a65' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 14px;
+  padding-right: 36px;
+  cursor: pointer;
+}
+
+select.input option {
+  background-color: #141414;
+  color: var(--clr-text-primary);
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* Submit button */
+.submitBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #fff;
+  background-color: var(--clr-red);
+  border: none;
+  padding: 14px 28px;
+  cursor: pointer;
+  align-self: flex-start;
+  transition:
+    background-color 0.3s var(--ease-smooth),
+    transform        0.35s var(--ease-expo),
+    box-shadow       0.35s var(--ease-expo);
+}
+
+.submitBtn:hover {
+  background-color: var(--clr-red-bright);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 32px rgba(200, 25, 43, 0.4);
+}
+
+/* Success message */
+.successMsg {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background-color: rgba(200, 25, 43, 0.1);
+  border: 1px solid rgba(200, 25, 43, 0.3);
+  padding: 1.25rem 1.5rem;
+}
+
+.successMsg svg { color: var(--clr-red); flex-shrink: 0; }
+.successMsg p {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--clr-text-primary);
+}
+
+/* ── Info column ── */
+.infoCol {
+  padding: clamp(2.5rem, 4vw, 3.5rem) clamp(2rem, 3.5vw, 3rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.infoTitle {
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 2vw, 1.65rem);
+  font-weight: 800;
+  color: var(--clr-text-primary);
+  letter-spacing: -0.02em;
+}
+
+.infoTagline {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 400;
+  color: var(--clr-text-muted);
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.infoList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.infoItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: var(--clr-text-secondary);
+  line-height: 1.5;
+}
+
+.infoIcon {
+  width: 16px;
+  height: 16px;
+  color: var(--clr-red);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.infoIcon svg { width: 100%; height: 100%; }
+
+.infoLink {
+  color: var(--clr-text-secondary);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.infoLink:hover { color: var(--clr-text-primary); }
+
+/* Call button */
+.callBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 0.5rem;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--clr-red);
+  border: 1px solid rgba(200, 25, 43, 0.35);
+  padding: 12px 20px;
+  align-self: flex-start;
+  transition:
+    background-color 0.3s var(--ease-smooth),
+    border-color     0.3s var(--ease-smooth),
+    color            0.3s var(--ease-smooth);
+}
+
+.callBtn:hover {
+  background-color: var(--clr-red);
+  border-color: var(--clr-red);
+  color: #fff;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .card { width: calc(100% - clamp(2rem, 8vw, 4rem)); }
+
+  .cardInner {
+    grid-template-columns: 1fr;
+  }
+
+  .colDivider {
+    width: auto;
+    height: 1px;
+    margin: 0 2rem;
+    align-self: auto;
+  }
+
+  .row { grid-template-columns: 1fr; }
+
+  .submitBtn,
+  .callBtn { width: 100%; justify-content: center; }
+}

@@ -1,0 +1,174 @@
+/* ============================================================
+   Navbar.module.css  v2 — Premium hover effects
+   ============================================================ */
+
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background-color: var(--clr-black-nav);
+  height: var(--nav-height);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  animation: navSlideDown 0.7s var(--ease-expo) both;
+}
+
+.navInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  padding: 0 clamp(1.25rem, 5vw, 3.5rem);
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+/* ── Brand (logo wrapper) ── */
+.brand {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  flex-shrink: 0;
+  animation: fadeSlideLeft 0.8s var(--ease-expo) 0.2s both;
+  transition: opacity 0.25s var(--ease-smooth);
+}
+.brand:hover { opacity: 0.8; }
+
+.brandLogo {
+  height: clamp(28px, 3.5vw, 40px);
+  width: auto;
+  max-width: 160px;
+  display: block;
+  object-fit: contain;
+}
+
+/* ── Desktop nav links ── */
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  list-style: none;
+  animation: fadeSlideRight 0.8s var(--ease-expo) 0.15s both;
+}
+
+/* ── Individual link — pill hover ── */
+.navLink {
+  position: relative;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: rgba(240, 238, 235, 0.75);
+  text-decoration: none;
+  padding: 7px 16px;
+  border-radius: 6px;
+  transition:
+    color            0.25s var(--ease-smooth),
+    background-color 0.25s var(--ease-smooth);
+  animation: fadeSlideRight 0.7s var(--ease-expo) var(--link-delay, 0.15s) both;
+}
+
+.navLink:hover {
+  color: var(--clr-red-bright);
+  background-color: rgba(200, 25, 43, 0.1);
+}
+
+/* Sliding underline accent */
+.linkUnderline {
+  position: absolute;
+  bottom: 4px;
+  left: 16px;
+  right: 16px;
+  height: 1.5px;
+  background: var(--clr-red);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.3s var(--ease-expo);
+  border-radius: 2px;
+}
+
+.navLink:hover .linkUnderline,
+.navLink:focus-visible .linkUnderline {
+  transform: scaleX(1);
+}
+
+.navLink:focus-visible {
+  outline: 2px solid var(--clr-red);
+  outline-offset: 2px;
+}
+
+/* ── Hamburger ── */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 17px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1100;
+}
+
+.bar {
+  display: block;
+  width: 100%;
+  height: 1.5px;
+  background-color: rgba(240, 238, 235, 0.8);
+  border-radius: 2px;
+  transition: transform 0.35s var(--ease-expo), opacity 0.25s, width 0.3s var(--ease-expo);
+  transform-origin: center;
+}
+
+.hamburgerOpen .bar:nth-child(1) { transform: translateY(7.75px) rotate(45deg); }
+.hamburgerOpen .bar:nth-child(2) { opacity: 0; width: 0; }
+.hamburgerOpen .bar:nth-child(3) { transform: translateY(-7.75px) rotate(-45deg); }
+
+/* ── Mobile overlay ── */
+.mobileOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background-color: var(--clr-black-nav);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.35s var(--ease-smooth);
+}
+.mobileOverlayOpen { opacity: 1; pointer-events: all; }
+
+.mobileLinks {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.mobileLinkItem {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity   0.4s var(--ease-expo) var(--item-delay, 0.05s),
+    transform 0.4s var(--ease-expo) var(--item-delay, 0.05s);
+}
+.mobileOverlayOpen .mobileLinkItem { opacity: 1; transform: translateY(0); }
+
+.mobileLink {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 7vw, 2.2rem);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: rgba(240, 238, 235, 0.85);
+  text-decoration: none;
+  transition: color 0.25s var(--ease-smooth);
+}
+.mobileLink:hover { color: var(--clr-red-bright); }
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .navLinks  { display: none; }
+  .hamburger { display: flex; }
+}
