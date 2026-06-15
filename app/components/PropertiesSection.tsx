@@ -14,6 +14,7 @@ const properties = [
     tag: "Ready to Move",
     area: "1,050 – 1,850 sq.ft",
     beds: "2 / 3 BHK",
+    image: "/apartment.jpg",
   },
   {
     id: "prop-2",
@@ -24,6 +25,7 @@ const properties = [
     tag: "Investment Pick",
     area: "100 – 500 sq. yards",
     beds: "Freehold",
+    image: "/plot.jpg",
   },
   {
     id: "prop-3",
@@ -34,6 +36,7 @@ const properties = [
     tag: "High ROI",
     area: "300 – 1,200 sq.ft",
     beds: "Ground + 2 Floors",
+    image: "/SCO.jpg",
   },
   {
     id: "prop-4",
@@ -44,6 +47,7 @@ const properties = [
     tag: "New Launch",
     area: "500 – 2,000 sq. yards",
     beds: "4 / 5 BHK Villas",
+    image: "/farmhouse.jpg",
   },
 ];
 
@@ -104,7 +108,7 @@ export default function PropertiesSection() {
               {/* Image */}
               <div className={styles.cardImageWrap}>
                 <Image
-                  src="/image1.jpg"
+                  src={prop.image}
                   alt={`${prop.title} — ${prop.location}`}
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
@@ -120,7 +124,7 @@ export default function PropertiesSection() {
                 <h3 className={styles.propTitle}>{prop.title}</h3>
                 <p className={styles.propLocation}>
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
                   </svg>
                   {prop.location}
                 </p>

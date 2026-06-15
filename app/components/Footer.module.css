@@ -8,18 +8,12 @@
   overflow: hidden;
 }
 
-/* ── Clean gradient line divider ── */
+/* ── Triangle divider: Red → Black ── */
 .dividerTop {
   width: 100%;
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(200, 25, 43, 0.4) 25%,
-    rgba(200, 25, 43, 0.4) 75%,
-    transparent 100%
-  );
-  margin-bottom: 0;
+  height: clamp(60px, 8vw, 100px);
+  background-color: var(--clr-red);
+  clip-path: polygon(0 0, 100% 0, 100% 0%, 0 100%);
 }
 
 /* ── Main inner grid ── */

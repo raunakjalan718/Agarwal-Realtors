@@ -9,18 +9,14 @@
   overflow: hidden;
 }
 
-/* ── Clean divider: Black → Red ── */
+/* ── Triangle divider: Black → Red ── */
 .dividerTop {
   width: 100%;
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(0, 0, 0, 0.5) 25%,
-    rgba(0, 0, 0, 0.5) 75%,
-    transparent 100%
-  );
-  margin-bottom: clamp(4rem, 7vw, 6rem);
+  height: calc(clamp(60px, 8vw, 100px) + 2px);
+  margin-top: -2px;                            /* close sub-pixel gap */
+  background-color: var(--clr-black);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 0%);
+  margin-bottom: clamp(3rem, 6vw, 5rem);
 }
 
 .inner {
@@ -45,7 +41,7 @@
   font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(0, 0, 0, 0.55);
+  color: rgba(255, 255, 255, 0.55);
 }
 
 .heading {
@@ -61,7 +57,7 @@
   font-family: var(--font-body);
   font-size: clamp(0.88rem, 1.4vw, 1rem);
   font-weight: 400;
-  color: rgba(0, 0, 0, 0.65);
+  color: rgba(255, 255, 255, 0.72);
   max-width: 48ch;
   line-height: 1.7;
 }

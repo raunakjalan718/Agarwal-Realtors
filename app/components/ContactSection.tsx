@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState, FormEvent } from "react";
 import { useScrollReveal } from "@/app/hooks/useScrollReveal";
 import styles from "./ContactSection.module.css";
@@ -138,6 +139,18 @@ export default function ContactSection() {
               </svg>
               Call Us Now
             </a>
+
+            {/* Office / property preview image */}
+            <div className={styles.contactImgWrap}>
+              <Image
+                src="/img2.webp"
+                alt="Agarwal Realtors office"
+                fill
+                sizes="(max-width: 900px) 100vw, 380px"
+                className={styles.contactImg}
+                style={{ objectFit: "cover" }}
+              />
+            </div>
           </div>
         </div>
       </div>

@@ -89,7 +89,7 @@ export default function AboutSection() {
         >
           <div className={styles.imageFrame}>
             <Image
-              src="/image1.jpg"
+              src="/img1.png"
               alt="Agarwal Realtors — Site visit in Sohna"
               fill
               sizes="(max-width: 768px) 100vw, 50vw"
