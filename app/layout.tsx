@@ -24,6 +24,11 @@ export const metadata: Metadata = {
     "Agarwal Realtors — Your trusted property dealer and real estate consultant in Sohna Dhunela. Expert guidance for buying, selling & investing in real estate.",
   keywords:
     "Agarwal Realtors, Property Dealer, Real Estate Consultant, Sohna, Dhunela, Real Estate",
+  icons: {
+    icon: "/logo.png",
+    shortcut: "/logo.png",
+    apple: "/logo.png",
+  },
   openGraph: {
     title: "Agarwal Realtors | Property Dealer & Real Estate Consultant",
     description:
